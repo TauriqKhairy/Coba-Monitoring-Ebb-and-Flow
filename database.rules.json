@@ -1,0 +1,39 @@
+{
+  "rules": {
+    "devices": {
+      "$deviceId": {
+        // User terautentikasi (login) dapat membaca status dan sensor
+        ".read": "auth != null",
+        // Hanya user terautentikasi yang dapat menulis kendali dan pengaturan
+        "control": {
+          ".write": "auth != null"
+        },
+        "settings": {
+          ".write": "auth != null"
+        },
+        // ESP32 (token auth atau kredensial perangkat) memperbarui telemetri & status
+        "status": {
+          ".write": "auth != null"
+        },
+        "sensors": {
+          ".write": "auth != null"
+        },
+        "actuators": {
+          ".write": "auth != null"
+        }
+      }
+    },
+    "history": {
+      "$deviceId": {
+        ".read": "auth != null",
+        ".write": "auth != null"
+      }
+    },
+    "alerts": {
+      "$deviceId": {
+        ".read": "auth != null",
+        ".write": "auth != null"
+      }
+    }
+  }
+}
